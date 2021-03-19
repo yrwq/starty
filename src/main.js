@@ -29,6 +29,17 @@ function write_links() {
     localStorage.setItem(L_KEY, JSON.stringify(links));
 }
 
+// List links
+function list_links(input) {
+    const links = get_links();
+
+    return Object.entries(links).map(([key, value]) => {
+        return {
+            key, value
+        };
+    });
+}
+
 // Format the url
 function format_url(url) {
     let final_url = url;
@@ -43,6 +54,7 @@ function format_url(url) {
 
 $(function () {
 
+
     // Initialize links
     const ls_links = read_links();
     if (ls_links) {
@@ -53,10 +65,9 @@ $(function () {
     $(document).keydown(function (e) {
 
         // Every key press will focus the command box
-        $("#box").focus();
-
-        // Enter will reset the value of the box
-        if (e.keyCode === 27) {
+        if (e.keyCode === 190) {
+            $("#box").focus();
+        } else if (e.keyCode === 27) {
             $("#box").val("");
         }
 
@@ -91,8 +102,16 @@ $(function () {
             var key = vals[1];
             const links = get_links();
             window.open(links[key], "_blank");
+
+        // List each link and add it to the main code area
         } else if(cmd == ":l") {
-            // TODO List links
+            const links = get_links();
+
+            $("#main").text("");
+
+            $.each(links, function(key, value) {
+                $("#main").append(key + " ~ " + value + "<br>");
+            });
 
         // Delete a key with its value from localStorage
         } else if(cmd == ":d") {
@@ -101,6 +120,9 @@ $(function () {
             delete links[key];
             write_links();
         }
+
+        $("#box").val("");
+        e.preventDefault();
 
     });
 

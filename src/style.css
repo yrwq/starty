@@ -1,5 +1,18 @@
+:root {
+    --bg: #292424;
+    --fg: #b1b1b1;
+    --green: #71a46c;
+    --yellow: #96905f;
+    --blue: #71a19f;
+    --magenta: #b680b1;
+    --red: #c27d7b;
+    --black: #363030;
+}
+
 html, input {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'FantasqueSansMonoRegular';
+    background-color: var(--bg);
+    color: var(--fg);
 }
 
 body {
@@ -16,11 +29,11 @@ body {
 #search {
     position: absolute;
     bottom: 0px;
-    padding: 0px 10px;
+    padding: 1% 1%;
+    width: 98%;
 }
 
-#box,
-#box:focus {
+#box {
     border: none;
     outline: none;
     cursor: text;
@@ -28,5 +41,11 @@ body {
     margin: 0;
     padding: 10px 15px;
     transition: all .2s ease-in-out;
-    width: 100%;
+    width: 99%;
+}
+
+#box:focus {
+    background-color: var(--black);
+    border: none;
+    outline: none;
 }

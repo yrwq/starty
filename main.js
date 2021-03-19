@@ -1,10 +1,10 @@
 $(function () {
 
-    // Any key to focus the input box,
-    // Return to search
     $(document).keydown(function (e) {
+        // Any key press will focus the input-box
         $("#box").focus();
 
+        // Enter
         if (e.keyCode === 27) {
             $("#box").blur();
             $("#box").val("");
@@ -18,8 +18,6 @@ $(function () {
             encodeURIComponent($("#box").val().replace(/^:s /g, ""));
 
         window.open(link, "_blank");
-        $("#box").blur();
-        $("#box").val("");
     });
 
 });

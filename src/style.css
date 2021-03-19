@@ -1,7 +1,5 @@
 html, input {
     font-family: 'Press Start 2P', cursive;
-    background-color: black;
-    color: white;
 }
 
 body {
@@ -11,38 +9,20 @@ body {
     width: 100%;
 }
 
-#container {
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    margin: auto;
-    width: 70%;
-}
-
-#blocked {
-    display: block;
-    text-align: center;
-    vertical-align: middle;
-    width: 100%;
-}
-
-#logo {
-    font-size: 100px;
-    font-weight: 600;
-}
-
-#logo span {
-    display: inline-block;
-    transform: rotate(-10deg);
+#main {
+    padding: 40px;
 }
 
 #search {
-    padding: 50px 10px;
+    position: absolute;
+    bottom: 0px;
+    padding: 0px 10px;
 }
 
-#box {
-    border: 0;
-    box-sizing: border-box;
+#box,
+#box:focus {
+    border: none;
+    outline: none;
     cursor: text;
     font-size: 16px;
     margin: 0;

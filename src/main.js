@@ -90,10 +90,16 @@ $(function () {
         } else if(cmd == ":o") {
             var key = vals[1];
             const links = get_links();
-            const target = links[key];
-            window.open(target, "_blank");
+            window.open(links[key], "_blank");
         } else if(cmd == ":l") {
+            // TODO List links
 
+        // Delete a key with its value from localStorage
+        } else if(cmd == ":d") {
+            var key = vals[1];
+            const links = get_links();
+            delete links[key];
+            write_links();
         }
 
     });

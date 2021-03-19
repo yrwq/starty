@@ -29,6 +29,18 @@ function write_links() {
     localStorage.setItem(L_KEY, JSON.stringify(links));
 }
 
+// Format the url
+function format_url(url) {
+    let final_url = url;
+    // If the url doesn't contains 'http' or 'https:',
+    // Add a 'https://' prefix to the url and return it.
+    // We need this, because we can't open a url without https://
+    if (!/^http|https:\/\//.test(final_url)) {
+        final_url = "https://" + final_url;
+    }
+    return final_url;
+}
+
 $(function () {
 
     // Initialize links
@@ -65,7 +77,7 @@ $(function () {
         if(cmd == ":a") {
 
             var key = vals[1];
-            var link = vals[2];
+            var link = format_url(vals[2]);
 
             // Get already added links from localstorage
             const links = get_links();

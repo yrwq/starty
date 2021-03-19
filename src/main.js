@@ -29,17 +29,6 @@ function write_links() {
     localStorage.setItem(L_KEY, JSON.stringify(links));
 }
 
-// List links
-function list_links(input) {
-    const links = get_links();
-
-    return Object.entries(links).map(([key, value]) => {
-        return {
-            key, value
-        };
-    });
-}
-
 // Format the url
 function format_url(url) {
     let final_url = url;
@@ -52,6 +41,22 @@ function format_url(url) {
     return final_url;
 }
 
+// Visuall list links (append them to 'links')
+function list() {
+    const links = get_links();
+
+    // Reset links
+    $(".links").text("");
+
+    // Add each link to the list
+    $.each(links, function(key, value) {
+        $(".links").append("\t\t\"" + key + "\": \"" + value + "\",<br>");
+    });
+
+    // Highlight the actual list
+    hljs.highlightAll();
+}
+
 $(function () {
 
 
@@ -61,17 +66,7 @@ $(function () {
         links = ls_links;
     }
 
-    const point = get_links();
-
-    $(".links").text("");
-
-    // Add each link to the list
-    $.each(point, function(key, value) {
-        $(".links").append("\t\t\"" + key + "\": \"" + value + "\",<br>");
-    });
-
-    // Highlight the actual list
-    hljs.highlightAll();
+    list();
 
     // Handle keypresses
     $(document).keydown(function (e) {
@@ -98,7 +93,6 @@ $(function () {
         // Add a key, link pair to the localstorage
         // :a key link
         if(cmd == ":a") {
-
             var key = vals[1];
             var link = format_url(vals[2]);
 
@@ -108,6 +102,7 @@ $(function () {
             links[key] = link;
             // Save the localstorage's state
             write_links();
+            list();
 
         // Open a link using the link's key from localstorage
         } else if(cmd == ":o") {
@@ -117,24 +112,14 @@ $(function () {
 
         // List each link and add it to the main code area
         } else if(cmd == ":l") {
-            const links = get_links();
-
-            $(".links").text("");
-
-            // Add each link to the list
-            $.each(links, function(key, value) {
-                $(".links").append("\t\t\"" + key + "\": \"" + value + "\",<br>");
-            });
-
-            // Highlight the actual list
-            hljs.highlightAll();
-
+            list();
         // Delete a key with its value from localStorage
         } else if(cmd == ":d") {
             var key = vals[1];
             const links = get_links();
             delete links[key];
             write_links();
+            list();
         }
 
         $("#box").val("");

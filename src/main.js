@@ -18,7 +18,6 @@ $(function () {
         var vals = val.split(" ");
 
         var cmd = vals[0];
-
         if(cmd == "add") {
             var key = vals[1];
             var link = vals[2];

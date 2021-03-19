@@ -1,31 +1,87 @@
+const L_KEY = "links";  // The local storage key where we store links
+let links = {};         // The dict of the links
+
+// Safely parse from local storage
+function safe_parse(input) {
+    try {
+        return JSON.parse(input) || {};
+    } catch {
+        return {};
+    }
+}
+
+// Get each link from links dict
+function get_links() {
+    let pos = [];
+    pos.forEach((p) => {
+        links = links[p];
+    });
+    return links;
+}
+
+// Parse links from local storage
+function read_links() {
+    return safe_parse(localStorage.getItem(L_KEY));
+}
+
+// Write links to local storage
+function write_links() {
+    localStorage.setItem(L_KEY, JSON.stringify(links));
+}
+
 $(function () {
 
+    // Initialize links
+    const ls_links = read_links();
+    if (ls_links) {
+        links = ls_links;
+    }
+
+    // Handle keypresses
     $(document).keydown(function (e) {
-        // Any key press will focus the input-box
+
+        // Every key press will focus the command box
         $("#box").focus();
 
-        // Enter
+        // Enter will reset the value of the box
         if (e.keyCode === 27) {
-            $("#box").blur();
             $("#box").val("");
         }
+
     });
 
     // Search for given string on google
     $("form").on("submit", function (e) {
 
+        // Get the value of the input box and split it to words
         val = $("#box").val();
         var vals = val.split(" ");
 
+        // The first value should always be a command,
         var cmd = vals[0];
-        if(cmd == "add") {
+
+        // Add a key, link pair to the localstorage
+        // :a key link
+        if(cmd == ":a") {
+
             var key = vals[1];
             var link = vals[2];
-            localStorage.setItem(key, link);
-        } else if(cmd == "open") {
+
+            // Get already added links from localstorage
+            const links = get_links();
+            // Add the key and a link as a dict to the localstorage
+            links[key] = link;
+            // Save the localstorage's state
+            write_links();
+
+        // Open a link using the link's key from localstorage
+        } else if(cmd == ":o") {
             var key = vals[1];
-            var link = localStorage.getItem(key);
-            window.open(link, "_blank");
+            const links = get_links();
+            const target = links[key];
+            window.open(target, "_blank");
+        } else if(cmd == ":l") {
+
         }
 
     });

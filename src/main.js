@@ -61,6 +61,18 @@ $(function () {
         links = ls_links;
     }
 
+    const point = get_links();
+
+    $(".links").text("");
+
+    // Add each link to the list
+    $.each(point, function(key, value) {
+        $(".links").append("\t\t\"" + key + "\": \"" + value + "\",<br>");
+    });
+
+    // Highlight the actual list
+    hljs.highlightAll();
+
     // Handle keypresses
     $(document).keydown(function (e) {
 
@@ -107,11 +119,15 @@ $(function () {
         } else if(cmd == ":l") {
             const links = get_links();
 
-            $("#main").text("");
+            $(".links").text("");
 
+            // Add each link to the list
             $.each(links, function(key, value) {
-                $("#main").append(key + " ~ " + value + "<br>");
+                $(".links").append("\t\t\"" + key + "\": \"" + value + "\",<br>");
             });
+
+            // Highlight the actual list
+            hljs.highlightAll();
 
         // Delete a key with its value from localStorage
         } else if(cmd == ":d") {

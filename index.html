@@ -6,8 +6,15 @@
         <meta charset="utf-8">
         <title>Starty</title>
 
+        <!-- Syntax highlighting -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+        <!-- Fonts -->
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/fantasque-sans-mono" type="text/css"/>
 
+        <!-- Local css -->
         <link rel="stylesheet" type="text/css" href="src/style.css">
 
     </head>
@@ -16,7 +23,28 @@
 
         <div id="main">
 
-            Code goes here
+            <pre><code class="python">
+import sys
+
+class Starty:
+    def __init__(self):
+
+        # self.help = ":h"
+        self.list = ":l"
+        self.add  = ":a"
+        self.open = ":o"
+        self.del  = ":d"
+
+        self.links = {
+            </code></pre>
+
+            <pre><code class="python links">
+                <!-- Actual links goes here -->
+            </code></pre>
+
+            <pre><code class="python">
+        }
+            </code></pre>
 
         </div>
 
@@ -28,5 +56,6 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="src/main.js"></script>
+        <script>hljs.highlightAll();</script>
     </body>
 </html>

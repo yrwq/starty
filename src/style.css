@@ -49,3 +49,80 @@ body {
     border: none;
     outline: none;
 }
+
+code {
+    margin: -15px;
+}
+
+.hljs {
+    background: var(--black);
+}
+
+.hljs,
+.hljs-subst {
+    font-size: 20px;
+    color: var(--fg);
+}
+
+.hljs-attribute,
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta-keyword,
+.hljs-name,
+.hljs-selector-tag {
+    font-weight: 700;
+}
+
+.hljs-deletion,
+.hljs-number,
+.hljs-quote,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-string,
+.hljs-template-tag,
+.hljs-type {
+    color: var(--blue);
+}
+
+.hljs-section,
+.hljs-title {
+    color: var(--green);
+    font-weight: 700;
+}
+
+.hljs-link,
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-symbol,
+.hljs-template-variable,
+.hljs-variable {
+    color: var(--red);
+}
+
+.hljs-literal {
+    color: var(--magenta);
+}
+
+.hljs-addition,
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code {
+    color: var(--magenta);
+}
+
+.hljs-meta {
+    color: var(--yellow);
+}
+
+.hljs-meta-string {
+    color: var(--green);
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: 700;
+}

@@ -14,10 +14,21 @@ $(function () {
     // Search for given string on google
     $("form").on("submit", function (e) {
 
-        link = "https://www.google.com/search?q=" +
-            encodeURIComponent($("#box").val().replace(/^:s /g, ""));
+        val = $("#box").val();
+        var vals = val.split(" ");
 
-        window.open(link, "_blank");
+        var cmd = vals[0];
+
+        if(cmd == "add") {
+            var key = vals[1];
+            var link = vals[2];
+            localStorage.setItem(key, link);
+        } else if(cmd == "open") {
+            var key = vals[1];
+            var link = localStorage.getItem(key);
+            window.open(link, "_blank");
+        }
+
     });
 
 });

@@ -1,12 +1,12 @@
 :root {
-    --bg: #292424;
-    --fg: #b1b1b1;
-    --green: #71a46c;
-    --yellow: #96905f;
-    --blue: #71a19f;
-    --magenta: #b680b1;
-    --red: #c27d7b;
-    --black: #363030;
+    --bg: #2d2a2e;
+    --fg: #e3e1e4;
+    --green: #80a65a;
+    --yellow: #b99f50;
+    --blue: #67acb5;
+    --magenta: #897dc1;
+    --red: #b86f4c;
+    --black: #363237;
 }
 
 html, input {

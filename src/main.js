@@ -71,6 +71,8 @@ $(function () {
     // Handle keypresses
     $(document).keydown(function (e) {
 
+        $("#box").focus();
+
         // Every key press will focus the command box
         if (e.keyCode === 190) {
             $("#box").focus();
@@ -120,6 +122,9 @@ $(function () {
             delete links[key];
             write_links();
             list();
+        // Search for a string on google
+        } else if(cmd.startsWith("?") || cmd.startsWith("/")){
+            window.open("https://google.com/search?q=" + cmd.substring(1, cmd.length), "_blank");
         }
 
         $("#box").val("");

@@ -94,7 +94,7 @@ $(function () {
 
         // Add a key, link pair to the localstorage
         // :a key link
-        if(cmd == ":a") {
+        if (/^:a/i.test(cmd)) {
             var key = vals[1];
             var link = format_url(vals[2]);
 
@@ -107,21 +107,23 @@ $(function () {
             list();
 
         // Open a link using the link's key from localstorage
-        } else if(cmd == ":o") {
+        } else if (/^:o/i.test(cmd)) {
             var key = vals[1];
             const links = get_links();
             window.open(links[key], "_blank");
 
         // List each link and add it to the main code area
-        } else if(cmd == ":l") {
+        } else if (/^:l/i.test(cmd)) {
             list();
+
         // Delete a key with its value from localStorage
-        } else if(cmd == ":d") {
+        } else if (/^:d/i.test(cmd)) {
             var key = vals[1];
             const links = get_links();
             delete links[key];
             write_links();
             list();
+
         // Search for a string on google
         } else if(cmd.startsWith("?") || cmd.startsWith("/")){
             window.open("https://google.com/search?q=" + cmd.substring(1, cmd.length), "_blank");

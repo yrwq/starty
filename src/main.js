@@ -125,8 +125,8 @@ $(function () {
             list();
 
         // Search for a string on google
-        } else if(cmd.startsWith("?") || cmd.startsWith("/")){
-            window.open("https://google.com/search?q=" + cmd.substring(1, cmd.length), "_blank");
+        } else if(val.startsWith("?") || val.startsWith("/")){
+            window.open("https://google.com/search?q=" + val.substring(1, val.length), "_blank");
         }
 
         $("#box").val("");
